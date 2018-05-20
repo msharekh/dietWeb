@@ -237,7 +237,12 @@ var Foods = [];
 function fillFoods() {
   var FoodArr = [['بيض',120], ['مارتديلا',540], ['جبن',50], ['شاي',20], ['قهوة',25], ['لحم',250], ['سلطة',50], ['حليب',70], ['تونة',80]];
   for (var i = 0; i < FoodArr.length; i++) {
-    var FoodObj = { fId: i + 1, fName: FoodArr[i][0],fCalorie:FoodArr[i][1] };
+    // var FoodObj = { fId: i + 1, fName: FoodArr[i][0],fCalorie:FoodArr[i][1] };
+    var FoodObj = new Food();
+    FoodObj.fid=i+1;
+    FoodObj.fName=FoodArr[i][0];
+    FoodObj.fCalorie=FoodArr[i][1];
+    
     Foods.push(FoodObj);
   }
 }
