@@ -2,26 +2,35 @@ var app = angular.module("myDietList", []);
 
 app.controller("myCtrl", function ($scope) {
  
-  fillFoods();
-  $scope.foods = Foods;
+
 
   fillPlans();
   $scope.plans = Plans;
 
-  fillMeals();
-  $scope.meals = Meals;
-
-  fillAmounts();
-  $scope.amounts = Amounts;
 
   
   fillWeeks();
   $scope.weeks = Weeks;
+
   fillDays();
   $scope.days = Days;
   
+  fillMeals();
+  $scope.meals = Meals;
+
+
+
+
+
+  fillFoods();
+  $scope.foods = Foods;
+
+  fillAmounts();
+  $scope.amounts = Amounts;
+  
   fillPlanFoods();
   $scope.planFoods = PlanFoods;
+
 
   //$scope.editMode= false;
 

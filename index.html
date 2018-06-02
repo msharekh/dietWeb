@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-    <title>رجيم في اسبوع | Recipes</title>
+  <title>رجيم في اسبوع | Recipes</title>
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-    <!-- Loading third party fonts -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|" rel="stylesheet" type="text/css">
-    <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="fonts/iconmoon.css" rel="stylesheet" type="text/css">
-    <!-- Loading main css file -->
-    <link rel="stylesheet" href="style.css">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+  <!-- Loading third party fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|" rel="stylesheet" type="text/css">
+  <!-- <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- <link href="fonts/iconmoon.css" rel="stylesheet" type="text/css"> -->
+  <!-- Loading main css file -->
+  <link rel="stylesheet" href="style.css">
 
     <!--[if lt IE 9]>
 <script src="js/ie-support/html5.js"></script>
@@ -24,248 +25,264 @@
 <![endif]-->
 
 
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
-
-    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-    <script type="text/javascript" src="js/Script.js"></script>
-
-  </head>
 
 
-  <body>
+<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+<!--     <script type="text/javascript" src="Script.js"></script> -->
 
-    <div id="site-content">
-      <header class="site-header">
-        <div class="container">
-          <a href="index.html" id="branding" class="pull-left">
-            <i class="icon-cupcake logo"></i>
-            <h1 class="site-title">مشعل </h1>
-          </a>
-          <!-- Default snippet for navigation -->
-          <div class="main-navigation pull-right">
-            <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-            <ul class="menu">
-              <li class="menu-item"><a href="about.html">About me</a></li>
-              <li class="menu-item"><a href="offer.html">My offer</a></li>
-              <li class="menu-item current-menu-item"><a href="recipe.html">Recipes</a></li>
-              <li class="menu-item"><a href="contact.html">Contact</a></li>
-            </ul> <!-- .menu -->
-          </div> <!-- .main-navigation -->
-
-          <div class="mobile-navigation"></div>
-        </div>
-      </header> <!-- .site-header -->
-
-      <main class="main-content">
-
-        <div class="content" ng-app="myDietList" ng-controller="myCtrl">
-          <div class="container container-fluid">
-
-            
+</head>
 
 
-            <h2 class="entry-title">رجيم في اسبوع</h2>
-            <p class="devHide">  </p>
-            <h4>نوع</h4>
-            <select class="form-control selectpicker" ng-model="selectedPlanId">
-              <option ng-repeat="p in plans" ng-value="p.pId">{{p.pName}}</option>
-            </select>
-            <h3 class="devHide">You selected: {{selectedPlanId}}</h3>
+<body>
 
-
-            <h4>الاسبوع</h4>
-            <select class="form-control selectpicker" ng-model="selectedWeekId">
-              <option ng-repeat="w in weeks" ng-value="w.wId">{{w.wName}}</option>
-            </select>
-            <h3 class="devHide">You selected: {{selectedWeekId}}</h3>
-
-
-            <h4>اليوم</h4>
-            <select class="form-control selectpicker" ng-model="selectedDayId">
-              <option ng-repeat="d in days" ng-value="d.dId">{{d.dName}}</option>
-            </select>
-            <h3 class="devHide">You selected: {{selectedDayId}}</h3>
-
-
-
-            <h4>الوجبة</h4>
-            <select ng-show="true ? selectedPlanId==0" class="form-control selectpicker" ng-model="selectedMealId">
-              <option ng-repeat="m in meals " ng-value="m.mId">{{m.mName}}</option>
-            </select>
-            <h3 class="devHide">You selected: {{selectedMealId}}</h3>
-            <div class="ingredient">
-              <h4>سلة  الطعام</h4>
-              <table>
-                <tr ng-repeat="cpf in chosenPlanFoods">
-                  <td><strong>{{cpf.pf.f.fName}}
-                    </strong></td> 
-                  <td> {{cpf.pf.a.aName}}  </td>
-                  <td>{{cpf.pf.qty}} </td>
-                  <td>
-                    <span class="calorie glyphicon glyphicon-dashboard">  
-                      {{cpf.pf.f.fCalorie * cpf.pf.a.aGram * cpf.pf.qty}} kcal
-                    </span>
-                  </td>
-                  <td><span  ng-click="deleteChosenPlanFoods(cpf)" class='glyphicon glyphicon-remove' /></td>
-                </tr>		
-              </table>
-              <span  class="calorie glyphicon glyphicon-dashboard"> {{getCalorieTotal()}} kcal</span>
-            </div>
-            <div class="recipes-list">
-
-              
-              
-              
- 
-              
-              
-
-              <div class="row-fluid">
-                <div class="row">
-                  <div class="col-md-6" 
-                       ng-repeat="pf in planFoods | limitTo:'10' | searchPlans : selectedPlanId : selectedWeekId : selectedDayId :  selectedMealId "
-                       >
-
-                    <article class="recipe"  >
-
-                      
-
-                      <figure class="recipe-image"><img src="http://www.101asianfoodrecipes.com/graphics/101.jpg" alt="Food 1"></figure>
-                      <div class="recipe-detail">
-                        <h2 class="recipe-title"><span class='fName' ng-click="addChosenPlanFoods(pf)">{{pf.f.fName}}</span></h2>
-
-                        <p>
-                          <span class='glyphicon glyphicon-plus' ng-click="changeQty(pf,1)"></span>
-
-                          <span class='glyphicon glyphicon-minus' ng-click="changeQty(pf,-1)"></span>
-                        </p>
-
-                        <p>{{pf.a.aName}}  {{pf.qty}}</p>                             
-
-                        <table 
-                               ng-show='editMode' class="table table-striped table-bordered">
-                          <tr>	
-                            <td> الخطة</td>
-                            <td> الاسبوع</td>
-                            <td> اليوم</td>
-                            <td> الوجبة</td>
-                            <td> العدد</td>
-                            <td> وحدة الكمية</td>
-                            <td> الصنف</td>
-                          </tr>
-                          <tr>	
-                            <td>
-                              <select  ng-model="pf.p" ng-options="p.pName for p in plans" class="form-control selectpicker"  >
-                              <option></option>
-                              </select>                               
-                              
-                            </td>
-                            <td> 
-                                                         <select  ng-model="pf.w" ng-options="w.wName for w in weeks" class="form-control selectpicker"  >
-                              <option></option>
-                              </select>  
-                               </td>
-                            <td> 
-                                                         <select  ng-model="pf.d" ng-options="d.dName for d in days" class="form-control selectpicker"  >
-                              <option></option>
-                              </select>  
-                               </td>
-                            <td> 
-                                                         <select  ng-model="pf.m" ng-options="m.mName for m in meals" class="form-control selectpicker"  >
-                              <option></option>
-                              </select>  
-                               </td>
-                            <td> 
-                                                         <input class='input-sm devHide' type='text'  ng-model="pf.qty" />
-                              <span class='glyphicon glyphicon-plus' ng-click="pf.qty=pf.qty+1"></span>
-{{pf.qty}}
-                          <span class='glyphicon glyphicon-minus' ng-click="pf.qty>0 ? pf.qty=pf.qty-1 : pf.qty=0"></span>
-                               </td>
-                            <td> 
-                                                         <select  ng-model="pf.a" ng-options="a.aName for a in amounts" class="form-control selectpicker"  >
-                              <option></option>
-                              </select>  
-                              </td>
-                            <td> 
-                                                         <select  ng-model="pf.f" ng-options="f.fName for f in foods" class="form-control selectpicker"  >
-                              <option></option>
-                              </select>  
-                               </td>
-                          </tr>
-                      </table>
-
-                        <div class="recipe-meta">
-                       
-                          <span class="calorie glyphicon glyphicon-dashboard">  
-                            {{pf.f.fCalorie * pf.a.aGram * pf.qty}} kcal
-                          </span>
-                          <span ng-hide='editMode' ng-click='editMode=!editMode' class='glyphicon glyphicon-pencil'
-                               >تعديل</span>
-                          <span ng-show='editMode' ng-click='editMode=!editMode' class='glyphicon glyphicon-ok'>موافق</span>
-                          
-                            <span ng-show='editMode' ng-click='updatePlanFoods()' class='glyphicon glyphicon-cloud'></span>
-                        </div>
-                      </div>
-                    </article><!--article-->
-                 
-                  </div>
-
-
-                </div>
-              </div><!-- row-fluid -->
-
-
-
-            </div>
-          </div>
-        </div>
-
-      </main> <!-- .main-content -->
-
-      <footer class="site-footer">
-        <div class="container">
+  <div id="site-content">
+    <header class="site-header">
+      <div class="container">
+        <a href="index.html" id="branding" class="pull-left">
           <i class="icon-cupcake logo"></i>
-          <nav ="footer-navigation">
-            <a href="about.html">About me</a>
-            <a href="offer.html">My offer</a>
-            <a href="recipe.html">Recipes</a>
-            <a href="contact.html">Contact</a>
-          </nav>
-          <div class="subscribe">
-            <form action="#">
-              <input type="text" placeholder="Enter your email to join newsletter...">
-              <input type="submit" value="Subscribe">
-            </form>
-          </div>
-          <div class="social-links">
-            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-            <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
-          </div>
-          <div class="colophon">
-            <p>Copyright 2014 Company name. Designed by Themezy. All right reserved</p>
-          </div>
-        </div>
-      </footer>
+          <h1 class="site-title">مشعل </h1>
+        </a>
+        <!-- Default snippet for navigation -->
+        <div class="main-navigation pull-right">
+          <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+          <ul class="menu">
+            <li class="menu-item"><a href="about.html">About me</a></li>
+            <li class="menu-item"><a href="offer.html">My offer</a></li>
+            <li class="menu-item current-menu-item"><a href="recipe.html">Recipes</a></li>
+            <li class="menu-item"><a href="contact.html">Contact</a></li>
+          </ul> <!-- .menu -->
+        </div> <!-- .main-navigation -->
 
+        <div class="mobile-navigation"></div>
+      </div>
+    </header> <!-- .site-header -->
+
+    <main class="main-content">
+
+      <div class="content" ng-app="myDietList" ng-controller="myCtrl">
+        <div class="container container-fluid">
+
+
+
+
+          <h2 class="entry-title">رجيم في اسبوع</h2>
+          <p class="devHide">  </p>
+          <h4>نوع</h4>
+          <select class="form-control selectpicker" ng-model="selectedPlanId">
+            <option ng-repeat="p in plans" ng-value="p.pId">{{p.pName}}</option>
+          </select>
+          <h3 class="devHide">You selected: {{selectedPlanId}}</h3>
+
+
+          <h4>الاسبوع</h4>
+          <select class="form-control selectpicker" ng-model="selectedWeekId">
+            <option ng-repeat="w in weeks" ng-value="w.wId">{{w.wName}}</option>
+          </select>
+          <h3 class="devHide">You selected: {{selectedWeekId}}</h3>
+
+
+          <h4>اليوم</h4>
+          <select class="form-control selectpicker" ng-model="selectedDayId">
+            <option ng-repeat="d in days" ng-value="d.dId">{{d.dName}}</option>
+          </select>
+          <h3 class="devHide">You selected: {{selectedDayId}}</h3>
+
+
+
+          <h4>الوجبة</h4>
+          <select ng-show="true ? selectedPlanId==0" class="form-control selectpicker" ng-model="selectedMealId">
+            <option ng-repeat="m in meals " ng-value="m.mId">{{m.mName}}</option>
+          </select>
+          <h3 class="devHide">You selected: {{selectedMealId}}</h3>
+          <div class="ingredient">
+            <h4>سلة  الطعام</h4>
+            <table>
+              <tr ng-repeat="cpf in chosenPlanFoods">
+                <td><strong>{{cpf.pf.f.fName}}
+                </strong></td> 
+                <td> {{cpf.pf.a.aName}}  </td>
+                <td>{{cpf.pf.qty}} </td>
+                <td>
+                  <span class="calorie glyphicon glyphicon-dashboard">  
+                    {{cpf.pf.f.fCalorie * cpf.pf.a.aGram * cpf.pf.qty}} kcal
+                  </span>
+                </td>
+                <td><span  ng-click="deleteChosenPlanFoods(cpf)" class='glyphicon glyphicon-remove' /></td>
+              </tr>		
+            </table>
+            <span  class="calorie glyphicon glyphicon-dashboard"> {{getCalorieTotal()}} kcal</span>
+          </div>
+          <div class="recipes-list">
+
+
+
+
+
+
+
+
+            <div class="row-fluid">
+              <div class="row">
+                <div class="col-md-6" 
+                ng-repeat="pf in planFoods | limitTo:'10' | searchPlans : selectedPlanId : selectedWeekId : selectedDayId :  selectedMealId "
+                >
+
+                <article class="recipe"  >
+
+
+
+                  <figure class="recipe-image"> 
+                    <p>
+                      <i class="icon-food icon-3x"></i>  
+                    </p>
+                       </figure>
+                  
+                  <div class="recipe-detail">
+                    <h2 class="recipe-title"><span class='fName' ng-click="addChosenPlanFoods(pf)">{{pf.f.fName}}</span></h2>
+
+                    <p>
+                      <span class='glyphicon glyphicon-plus' ng-click="changeQty(pf,1)"></span>
+
+                      <span class='glyphicon glyphicon-minus' ng-click="changeQty(pf,-1)"></span>
+                    </p>
+
+                    <p>{{pf.a.aName}}  {{pf.qty}}</p>                             
+
+                    <table 
+                    ng-show='editMode' class="table table-striped table-bordered">
+                    <tr>	
+                      <td> الخطة</td>
+                      <td> الاسبوع</td>
+                      <td> اليوم</td>
+                      <td> الوجبة</td>
+                      <td> العدد</td>
+                      <td> وحدة الكمية</td>
+                      <td> الصنف</td>
+                    </tr>
+                    <tr>	
+                      <td>
+                        <select  ng-model="pf.p" ng-options="p.pName for p in plans" class="form-control selectpicker"  >
+                          <option></option>
+                        </select>                               
+
+                      </td>
+                      <td> 
+                       <select  ng-model="pf.w" ng-options="w.wName for w in weeks" class="form-control selectpicker"  >
+                        <option></option>
+                      </select>  
+                    </td>
+                    <td> 
+                     <select  ng-model="pf.d" ng-options="d.dName for d in days" class="form-control selectpicker"  >
+                      <option></option>
+                    </select>  
+                  </td>
+                  <td> 
+                   <select  ng-model="pf.m" ng-options="m.mName for m in meals" class="form-control selectpicker"  >
+                    <option></option>
+                  </select>  
+                </td>
+                <td> 
+                 <input class='input-sm devHide' type='text'  ng-model="pf.qty" />
+                 <span class='glyphicon glyphicon-plus' ng-click="pf.qty=pf.qty+1"></span>
+                 {{pf.qty}}
+                 <span class='glyphicon glyphicon-minus' ng-click="pf.qty>0 ? pf.qty=pf.qty-1 : pf.qty=0"></span>
+               </td>
+               <td> 
+                 <select  ng-model="pf.a" ng-options="a.aName for a in amounts" class="form-control selectpicker"  >
+                  <option></option>
+                </select>  
+              </td>
+              <td> 
+               <select  ng-model="pf.f" ng-options="f.fName for f in foods" class="form-control selectpicker"  >
+                <option></option>
+              </select>  
+            </td>
+          </tr>
+        </table>
+
+        <div class="recipe-meta">
+
+          <span class="calorie glyphicon glyphicon-dashboard">  
+            {{pf.f.fCalorie * pf.a.aGram * pf.qty}} kcal
+          </span>
+          <span ng-hide='editMode' ng-click='editMode=!editMode' class='glyphicon glyphicon-pencil'
+          >تعديل</span>
+          <span ng-show='editMode' ng-click='editMode=!editMode' class='glyphicon glyphicon-ok'>موافق</span>
+
+          <span ng-show='editMode' ng-click='updatePlanFoods()' class='glyphicon glyphicon-cloud'></span>
+        </div>
+      </div>
+    </article><!--article-->
+
+  </div>
+
+
+</div>
+</div><!-- row-fluid -->
+
+
+
+</div>
+</div>
+</div>
+
+</main> <!-- .main-content -->
+
+<footer class="site-footer">
+  <div class="container">
+    <i class="icon-cupcake logo"></i>
+    <nav ="footer-navigation">
+      <a href="about.html">About me</a>
+      <a href="offer.html">My offer</a>
+      <a href="recipe.html">Recipes</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="subscribe">
+      <form action="#">
+        <input type="text" placeholder="Enter your email to join newsletter...">
+        <input type="submit" value="Subscribe">
+      </form>
     </div>
+    <div class="social-links">
+      <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+      <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+      <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+      <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
+    </div>
+    <div class="colophon">
+      <p>Copyright 2014 Company name. Designed by Themezy. All right reserved</p>
+    </div>
+  </div>
+</footer>
+
+</div>
 
 
 
 <!--    <script src="js/jquery-1.11.1.min.js"></script>-->
-      <script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>  
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-<!--    <script src="js/plugins.js"></script>-->
-    <script src="script.js"></script>
 
-    FORMULA FOR BMR:
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>  
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+<!--    <script src="js/plugins.js"></script>-->
+
+<script src="src/Food.js"></script>
+<script src="src/script.js"></script>
+
+FORMULA FOR BMR:
 W = weight in kilograms (weight (lbs)/2.2) =weight in kg
 H = height in centimeters (inches x 2.54) =height in cm
 A = age in years
 
 Men: BMR=66.47+ (13.75 x W) + (5.0 x H) - (6.75 x A)
 Women: BMR=665.09 + (9.56 x W) + (1.84 x H) - (4.67 x A)
-  </body>
+</body>
 
 </html>
