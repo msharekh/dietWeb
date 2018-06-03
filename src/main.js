@@ -163,10 +163,17 @@ app.filter('searchPlans',function(){
 var Meals = [];
 function fillMeals() {
   var MealArr = ['فطور', 'بعد الفطور', 'غداء', 'بعد الغداء', 'العشاء', 'بعد العشاء'];
+  
   for (var i = 0; i < MealArr.length; i++) {
-    var MealObj = { mId: i + 1, mName: MealArr[i] };
-    Meals.push(MealObj);
+    // var MealObj = { mId: i + 1, mName: MealArr[i] };
+    var mealObj = new Meal();
+
+    mealObj.mId=i+1;
+    mealObj.mName=MealArr[i];
+
+    Meals.push(mealObj);
   }
+
   //c(Meals);
 }
 
@@ -174,10 +181,15 @@ function fillMeals() {
 var Days = [];
 function fillDays() {
   var dArr = ['السبت', 'الاحد', 'الاثنين', 'الثلاثاء', 'الاربعاء', 'الخميس', 'الجمعة'];
+  
   for (var i = 0; i < dArr.length; i++) {
-    var DayObj = { dId: i + 1, dName: dArr[i] };
+    // var DayObj = { dId: i + 1, dName: dArr[i] };
+    var dayObj = new Day();
+
+    dayObj.dId= i + 1;
+    dayObj.dName= dArr[i];
     //c(dayobj);      
-    Days.push(DayObj);
+    Days.push(dayObj);
   }
 }
 
@@ -185,10 +197,14 @@ function fillDays() {
 var Weeks = [];
 function fillWeeks() {
   var wArr = ['الاول', 'الثاني', 'الثالث', 'الرابع'];
+  
   for (var i = 0; i < wArr.length; i++) {
-    var WeekObj = { wId: i + 1, wName: wArr[i] };
+    // var WeekObj = { wId: i + 1, wName: wArr[i] };
+    var weekObj=new Week();
+    weekObj.wId= i + 1;
+    weekObj.wName= wArr[i];
     //c(dayobj);      
-    Weeks.push(WeekObj);
+    Weeks.push(weekObj);
   }
 }
 
@@ -232,12 +248,19 @@ function fillAmounts() {
           200
         ]
       ];
+  
   for (var i = 0; i < AmountArr.length; i++) {
-    var AmountObj = { aId: i + 1
-                     , aName: AmountArr[i][0]
-                     ,aGram:AmountArr[i][1] 
-                    };
-    Amounts.push(AmountObj);
+    // var AmountObj = { aId: i + 1
+    //                  , aName: AmountArr[i][0]
+    //                  ,aGram:AmountArr[i][1] 
+    //                 };
+    var amountObj=new Amount();
+
+    amountObj.aId= i + 1;
+    amountObj.aName= AmountArr[i][0];
+    amountObj.aGram=AmountArr[i][1]; 
+
+    Amounts.push(amountObj);
   }
 }
 
@@ -245,14 +268,15 @@ function fillAmounts() {
 var Foods = [];
 function fillFoods() {
   var FoodArr = [['بيض',120], ['مارتديلا',540], ['جبن',50], ['شاي',20], ['قهوة',25], ['لحم',250], ['سلطة',50], ['حليب',70], ['تونة',80]];
+  
   for (var i = 0; i < FoodArr.length; i++) {
     // var FoodObj = { fId: i + 1, fName: FoodArr[i][0],fCalorie:FoodArr[i][1] };
-    var FoodObj = new Food();
-    FoodObj.fid=i+1;
-    FoodObj.fName=FoodArr[i][0];
-    FoodObj.fCalorie=FoodArr[i][1];
+    var foodObj = new Food();
+    foodObj.fid=i+1;
+    foodObj.fName=FoodArr[i][0];
+    foodObj.fCalorie=FoodArr[i][1];
     
-    Foods.push(FoodObj);
+    Foods.push(foodObj);
   }
 }
 
@@ -260,9 +284,14 @@ function fillFoods() {
 var Plans = [];
 function fillPlans() {
   var PlanArr = ['اتكنز', 'نتريشن', 'دشتي', 'كيميائي'];
+  
   for (var i = 0; i < PlanArr.length; i++) {
-    var PlanObj = { pId: i + 1, pName: PlanArr[i] };
-    Plans.push(PlanObj);
+    // var PlanObj = { pId: i + 1, pName: PlanArr[i] };
+    var planObj = new Plan();
+    planObj.pId= i + 1;
+    planObj.pName=PlanArr[i];
+
+    Plans.push(planObj);
   }
 }
 
