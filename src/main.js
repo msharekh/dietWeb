@@ -14,12 +14,11 @@ app.controller("myCtrl", function ($scope) {
 
   fillDays();
   $scope.days = Days;
+
+
   
   fillMeals();
   $scope.meals = Meals;
-
-
-
 
 
   fillFoods();
@@ -143,11 +142,11 @@ app.filter('searchPlans',function(){
     if (!selectedPlanId) { return planfoods;}
     angular.forEach(planfoods,function(pf){
       if (pf.p.pId==selectedPlanId 
-          &&
+          ||
           pf.w.wId == selectedWeekId
-          && 
+          || 
           pf.d.dId == selectedDayId
-          && 
+          || 
           pf.m.mId == selectedMealId) {
         filtered.push(pf);
       }
@@ -159,22 +158,37 @@ app.filter('searchPlans',function(){
 
 
 
-//fill Meals
-var Meals = [];
-function fillMeals() {
-  var MealArr = ['فطور', 'بعد الفطور', 'غداء', 'بعد الغداء', 'العشاء', 'بعد العشاء'];
+
+
+
+//fill Plans
+var Plans = [];
+function fillPlans() {
+  var PlanArr = ['اتكنز', 'نتريشن', 'دشتي', 'كيميائي'];
   
-  for (var i = 0; i < MealArr.length; i++) {
-    // var MealObj = { mId: i + 1, mName: MealArr[i] };
-    var mealObj = new Meal();
+  for (var i = 0; i < PlanArr.length; i++) {
+    // var PlanObj = { pId: i + 1, pName: PlanArr[i] };
+    var planObj = new Plan();
+    planObj.pId= i + 1;
+    planObj.pName=PlanArr[i];
 
-    mealObj.mId=i+1;
-    mealObj.mName=MealArr[i];
-
-    Meals.push(mealObj);
+    Plans.push(planObj);
   }
+}
 
-  //c(Meals);
+//fill Weeks
+var Weeks = [];
+function fillWeeks() {
+  var wArr = ['الاول', 'الثاني', 'الثالث', 'الرابع'];
+  
+  for (var i = 0; i < wArr.length; i++) {
+    // var WeekObj = { wId: i + 1, wName: wArr[i] };
+    var weekObj=new Week();
+    weekObj.wId= i + 1;
+    weekObj.wName= wArr[i];
+    //c(dayobj);      
+    Weeks.push(weekObj);
+  }
 }
 
 //fill Days
@@ -193,19 +207,22 @@ function fillDays() {
   }
 }
 
-//fill Weeks
-var Weeks = [];
-function fillWeeks() {
-  var wArr = ['الاول', 'الثاني', 'الثالث', 'الرابع'];
+//fill Meals
+var Meals = [];
+function fillMeals() {
+  var MealArr = ['فطور', 'بعد الفطور', 'غداء', 'بعد الغداء', 'العشاء', 'بعد العشاء'];
   
-  for (var i = 0; i < wArr.length; i++) {
-    // var WeekObj = { wId: i + 1, wName: wArr[i] };
-    var weekObj=new Week();
-    weekObj.wId= i + 1;
-    weekObj.wName= wArr[i];
-    //c(dayobj);      
-    Weeks.push(weekObj);
+  for (var i = 0; i < MealArr.length; i++) {
+    // var MealObj = { mId: i + 1, mName: MealArr[i] };
+    var mealObj = new Meal();
+
+    mealObj.mId=i+1;
+    mealObj.mName=MealArr[i];
+
+    Meals.push(mealObj);
   }
+
+  //c(Meals);
 }
 
 //fill Amounts
@@ -280,20 +297,7 @@ function fillFoods() {
   }
 }
 
-//fill Plans
-var Plans = [];
-function fillPlans() {
-  var PlanArr = ['اتكنز', 'نتريشن', 'دشتي', 'كيميائي'];
-  
-  for (var i = 0; i < PlanArr.length; i++) {
-    // var PlanObj = { pId: i + 1, pName: PlanArr[i] };
-    var planObj = new Plan();
-    planObj.pId= i + 1;
-    planObj.pName=PlanArr[i];
 
-    Plans.push(planObj);
-  }
-}
 
 
 
